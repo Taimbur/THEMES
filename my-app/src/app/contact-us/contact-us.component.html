@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact-us</title>
+  </head>
+  <body>
+    <p>Form Status: {{ profileForm.status }}</p>
+
+    <div class="container">
+      <form method='post' [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <input
+            type="text"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="Your Name"
+            formControlName="firstName"
+          />
+          <br />
+        </div>
+        <div class="mb-3">
+          <input
+            type="email"
+            class="form-control"
+            id="exampleInputPassword1"
+            placeholder="Your Email"
+            formControlName="email"
+          />
+        </div>
+        <br />
+        <div class="mb-3 form-check">
+          <input
+            type="tel"
+            class="form-check-input"
+            id="exampleCheck1"
+            placeholder="Your Number"
+            formControlName="phone"
+            [class.invalid]="profileForm.get('firstName')?.invalid && (profileForm.get('firstName')?.dirty || profileForm.get('firstName')?.touched)"
+          />
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>
